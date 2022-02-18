@@ -1,6 +1,7 @@
 package com.cjs.test;
 
 import com.cjs.arrays.Array;
+import com.cjs.binary_search_tree.BST;
 import com.cjs.linked_list.LinkedList;
 import com.cjs.queue.ArrayQueue;
 import com.cjs.queue.LinkedListQueue;
@@ -18,7 +19,35 @@ public class Test {
 //        test.testLoopQueue();
 //        test.testLinkedList();
 //        test.testLikedListStack();
-        test.testLinkedListQueue();
+//        test.testLinkedListQueue();
+        test.testBST();
+    }
+    //测试BST
+    public void testBST(){
+        BST<Integer> bst = new BST<>();
+        int[] nums = {5, 3, 6, 8, 4, 2};
+        for(int num: nums)
+            bst.add(num);
+
+        /////////////////
+        //      5      //
+        //    /   \    //
+        //   3    6    //
+        //  / \    \   //
+        // 2  4     8  //
+        /////////////////
+//        System.out.println(bst);
+//        bst.preOrder();
+//        System.out.println();
+//
+//        bst.inOrder();
+//        System.out.println();
+//
+//        bst.postOrder();
+//        System.out.println();
+
+//        bst.levelOrder();
+//        System.out.println();
     }
     //测试链表队列
     private void testLinkedListQueue(){

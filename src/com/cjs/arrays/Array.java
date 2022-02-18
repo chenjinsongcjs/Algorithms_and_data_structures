@@ -145,4 +145,16 @@ public class Array<E> {
         }
         data = newData;
     }
+
+    public void reverse() {
+        int i = 0;
+        int j = size - 1;
+        while(i < j){
+            E tmp = data[i];
+            data[i] = data[j];
+            data[j] = tmp;
+            i++;
+            j--;
+        }
+    }
 }
