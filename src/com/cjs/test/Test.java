@@ -1,12 +1,28 @@
 package com.cjs.test;
 
 import com.cjs.arrays.Array;
+import com.cjs.stack.ArrayStack;
 
 public class Test {
 
     public static void main(String[] args) {
         Test test = new Test();
-        test.testArray();
+//        test.testArray();
+        test.testArrayStack();
+    }
+    //数组栈测试
+    private void testArrayStack(){
+        ArrayStack<Integer> stack = new ArrayStack<>();
+
+        for(int i = 0 ; i < 5 ; i ++){
+            stack.push(i);
+            System.out.println(stack);
+        }
+
+        stack.pop();
+        System.out.println(stack);
+
+        System.out.println(stack.peek());
     }
     //动态数组测试
     private void testArray(){

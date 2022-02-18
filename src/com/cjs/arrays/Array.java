@@ -19,7 +19,9 @@ public class Array<E> {
     public int getCapacity() {
         return data.length;
     }
-
+    public boolean isEmpty(){
+        return size == 0;
+    }
     public Array(int capacity) {
         data = (E[]) new Object[capacity];
         size = 0;
