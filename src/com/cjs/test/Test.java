@@ -1,6 +1,8 @@
 package com.cjs.test;
 
 import com.cjs.arrays.Array;
+import com.cjs.queue.ArrayQueue;
+import com.cjs.queue.LoopQueue;
 import com.cjs.stack.ArrayStack;
 
 public class Test {
@@ -8,7 +10,36 @@ public class Test {
     public static void main(String[] args) {
         Test test = new Test();
 //        test.testArray();
-        test.testArrayStack();
+//        test.testArrayStack();
+//        test.testArrayQueue();
+        test.testLoopQueue();
+    }
+    //循环队列测试
+    public void testLoopQueue(){
+        LoopQueue<Integer> queue = new LoopQueue<>(5);
+        for(int i = 0 ; i < 10 ; i ++){
+            queue.enQueue(i);
+            System.out.println(queue);
+
+            if(i % 3 == 2){
+                queue.deQueue();
+                System.out.println(queue);
+            }
+        }
+    }
+    //数组队列测试
+    public void testArrayQueue(){
+        ArrayQueue<Integer> queue = new ArrayQueue<>();
+        for(int i = 0 ; i < 10 ; i ++){
+            queue.enQueue(i);
+            System.out.println(queue);
+
+            if(i % 3 == 2){
+                queue.deQueue();
+                System.out.println(queue);
+            }
+        }
+        System.out.println(queue.getFront());
     }
     //数组栈测试
     private void testArrayStack(){
