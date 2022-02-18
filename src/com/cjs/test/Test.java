@@ -1,9 +1,12 @@
 package com.cjs.test;
 
 import com.cjs.arrays.Array;
+import com.cjs.linked_list.LinkedList;
 import com.cjs.queue.ArrayQueue;
+import com.cjs.queue.LinkedListQueue;
 import com.cjs.queue.LoopQueue;
 import com.cjs.stack.ArrayStack;
+import com.cjs.stack.LinkedListStack;
 
 public class Test {
 
@@ -12,10 +15,59 @@ public class Test {
 //        test.testArray();
 //        test.testArrayStack();
 //        test.testArrayQueue();
-        test.testLoopQueue();
+//        test.testLoopQueue();
+//        test.testLinkedList();
+//        test.testLikedListStack();
+        test.testLinkedListQueue();
+    }
+    //测试链表队列
+    private void testLinkedListQueue(){
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
+        for(int i = 0 ; i < 10 ; i ++){
+            queue.enQueue(i);
+            System.out.println(queue);
+
+            if(i % 3 == 2){
+                queue.deQueue();
+                System.out.println(queue);
+            }
+        }
+    }
+    //测试链表栈
+    private void testLikedListStack(){
+        LinkedListStack<Integer> stack = new LinkedListStack<>();
+
+        for(int i = 0 ; i < 5 ; i ++){
+            stack.push(i);
+            System.out.println(stack);
+        }
+
+        stack.pop();
+        System.out.println(stack);
+    }
+    //测试链表
+    private void testLinkedList(){
+
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        for(int i = 0 ; i < 5 ; i ++){
+            linkedList.addFirst(i);
+            System.out.println(linkedList);
+        }
+
+        linkedList.add(2, 666);
+        System.out.println(linkedList);
+
+        linkedList.remove(2);
+        System.out.println(linkedList);
+
+        linkedList.removeFirst();
+        System.out.println(linkedList);
+
+        linkedList.removeLast();
+        System.out.println(linkedList);
     }
     //循环队列测试
-    public void testLoopQueue(){
+    private void testLoopQueue(){
         LoopQueue<Integer> queue = new LoopQueue<>(5);
         for(int i = 0 ; i < 10 ; i ++){
             queue.enQueue(i);
@@ -28,7 +80,7 @@ public class Test {
         }
     }
     //数组队列测试
-    public void testArrayQueue(){
+    private void testArrayQueue(){
         ArrayQueue<Integer> queue = new ArrayQueue<>();
         for(int i = 0 ; i < 10 ; i ++){
             queue.enQueue(i);
