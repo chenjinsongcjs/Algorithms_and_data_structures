@@ -212,6 +212,116 @@ public class BST<E extends Comparable<E>> {
         System.out.println(array);
     }
 
+    //BST删除部分
+    //删除BST中的最大值,最大值为最右节点
+    public E removeMax() {
+        E max = findMax(root);
+        root = removeMax(root);
+        return max;
+    }
+
+    private Node removeMax(Node node) {
+        if (node == null)
+            return null;
+        if (node.right == null) {//找到最大值节点
+            Node delNodeLeft = node.left;
+            node.left = null;
+            size--;
+            return delNodeLeft;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+    private E findMax(Node node) {
+        while (node.right != null) {
+            node = node.right;
+        }
+        return node.data;
+    }
+
+    //删除BST中的最小值，最小值为最左节点
+    public E removeMin() {
+        E min = findMin(root).data;
+        root = removeMin(root);
+        return min;
+    }
+
+    private Node findMin(Node node) {
+        if (node == null)
+            return null;
+        if (node.left == null) {
+            return node;
+        }
+        return findMin(node.left);
+    }
+
+    private Node removeMin(Node node) {
+        if (node == null)
+            return null;
+        if (node.left == null) {
+            size--;
+            Node delNodeRight = node.right;
+            node.right = null;
+            return delNodeRight;
+        }
+        node.left = removeMin(node.left);//接住，下一层的返回值
+        return node;
+    }
+
+    //真正的删除
+    //删除指定元素
+    public void removeElement(E e) {
+        root = removeElement(root, e);//在root为根的二叉树中删除指定元素
+    }
+
+    /**
+     * 情况分析：
+     * 1.叶子节点直接删除
+     * 2.只有左子树或者右子树，上一层直接连接他的左子树或者右子树
+     * 3.含有左右子树，用其右子树中的最左节点（右子树中最小值）替换当前节点，
+     * 或者使用左子树中的最右节点替换当前节点
+     *
+     * @param node
+     * @param e
+     * @return
+     */
+    private Node removeElement(Node node, E e) {
+        if (node == null)
+            return null;
+        //先定位，再删
+        if (e.compareTo(node.data) < 0) {
+            node.left = removeElement(node.left, e);//接住下一层
+            return node;
+        } else if (e.compareTo(node.data) > 0) {
+            node.right = removeElement(node.right, e);//接住下一层返回值
+            return node;
+        } else {
+            //找到要删除的节点，直接删除。
+            if (node.right == null) {
+                //左子树不为空，右子树为空
+                size--;
+                Node delNodeLeft = node.left;
+                node.left = null;
+                return delNodeLeft;
+            }
+            if (node.left == null) {
+                //右子树不为空，左子树为空
+                size--;
+                Node delNodeRight = node.right;
+                node.right = null;
+                return delNodeRight;
+            }
+            //左右子树都不为空
+            Node min = findMin(node.right);
+            min.right = removeMin(node.right);
+            min.left = node.left;
+            node.left = node.right = null;
+            return min;
+
+        }
+    }
+
 
     //二叉树的打印
     @Override

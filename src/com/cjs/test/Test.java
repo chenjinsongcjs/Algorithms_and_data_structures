@@ -36,7 +36,8 @@ public class Test {
         //  / \    \   //
         // 2  4     8  //
         /////////////////
-//        System.out.println(bst);
+        bst.removeElement(3);
+        System.out.println(bst);
 //        bst.preOrder();
 //        System.out.println();
 //
