@@ -30,7 +30,13 @@ public class Array<E> {
     public Array() {
         this(10);
     }
-
+    public Array(E[] arr){
+        data = (E[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
     //添加操作
     //在指定位置添加
     public void add(int index, E e) {
@@ -156,5 +162,10 @@ public class Array<E> {
             i++;
             j--;
         }
+    }
+    public void swap(int i,int j){
+        E tmp = data[i];
+        data[i] = data[j];
+        data[j] = tmp;
     }
 }
