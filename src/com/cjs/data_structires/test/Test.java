@@ -10,21 +10,15 @@ import com.cjs.data_structires.queue.LoopQueue;
 import com.cjs.data_structires.stack.ArrayStack;
 import com.cjs.data_structires.stack.LinkedListStack;
 
-import java.util.Random;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class Test {
 
     public static void main(String[] args) {
-        Test test = new Test();
-//        test.testArray();
-//        test.testArrayStack();
-//        test.testArrayQueue();
-//        test.testLoopQueue();
-//        test.testLinkedList();
-//        test.testLikedListStack();
-//        test.testLinkedListQueue();
-//        test.testBST();
-            test.testHeapMain();
+
     }
     private void testHeapMain(){
         int n = 1000000;
